@@ -1,0 +1,142 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 1415.0479631533012,
+            "y": 71.141408191943469
+          },
+          "nodeIndex": "_Medidas",
+          "nodeLineageTag": "9a685908-f46a-464d-b2bf-5b399488960f",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 1280.6308479741379,
+            "y": 0.0042329500802047448
+          },
+          "nodeIndex": "Fatores",
+          "nodeLineageTag": "3bd9afc2-7d41-42b9-9d84-93a7bdde37c5",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 303.05987919039029,
+            "y": 164.23810577820103
+          },
+          "nodeIndex": "dProdutosFinais",
+          "nodeLineageTag": "c84d250c-3e25-4e42-9941-9a5ecdc31d24",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 6,
+          "expandedHeight": 272
+        },
+        {
+          "location": {
+            "x": 686.13948938134627,
+            "y": 177.14617051757551
+          },
+          "nodeIndex": "fPedidos",
+          "nodeLineageTag": "17cd1502-711e-4f48-855a-332a0be16b68",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 8,
+          "expandedHeight": 300
+        },
+        {
+          "location": {
+            "x": 233.4456663320845,
+            "y": 441.63044248017559
+          },
+          "nodeIndex": "dCategoriasProdutos",
+          "nodeLineageTag": "307e8d49-28cf-4751-b6fd-5f4711bcc209",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 7
+        },
+        {
+          "location": {
+            "x": 1054.7790440918459,
+            "y": 467.00084068137744
+          },
+          "nodeIndex": "dMetaMensal",
+          "nodeLineageTag": "aedaaba8-02a7-4eb9-ad8b-1caccd2b5cfa",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 683.26875086507619,
+            "y": 463.1211693641406
+          },
+          "nodeIndex": "Calendario",
+          "nodeLineageTag": "29499471-0aba-4075-b6a4-a5c8b6e36b8b",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 2.2423387282811973,
+            "y": 91.357206979530659
+          },
+          "nodeIndex": "dMarcas",
+          "nodeLineageTag": "55a6f41d-f2c1-46c6-822e-37d341173da0",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 2,
+          "expandedHeight": 152
+        },
+        {
+          "location": {
+            "x": 1696.8056244250201,
+            "y": 257.49971484900868
+          },
+          "nodeIndex": "Comparacao categoria",
+          "nodeLineageTag": "3102552e-4be5-4e73-af09-fca531c63b68",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Todas as tabelas",
+      "zoomValue": 89.19259052056934,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "Todas as tabelas",
+  "defaultDiagram": "Todas as tabelas"
+}

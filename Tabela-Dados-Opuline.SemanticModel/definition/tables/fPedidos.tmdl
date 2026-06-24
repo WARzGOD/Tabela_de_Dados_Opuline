@@ -1,0 +1,145 @@
+table fPedidos
+	lineageTag: 17cd1502-711e-4f48-855a-332a0be16b68
+
+	column 'Código do pedido'
+		dataType: int64
+		formatString: 0
+		lineageTag: 65416f9a-069f-49be-83b8-5887a048ca23
+		summarizeBy: sum
+		sourceColumn: Código do pedido
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Código do cliente'
+		dataType: int64
+		formatString: 0
+		lineageTag: f00097f4-eb79-43a0-a8c9-7be205917b11
+		summarizeBy: sum
+		sourceColumn: Código do cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Data do pedido'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 0ff5003e-2d80-448b-a21d-938a816721ab
+		summarizeBy: none
+		sourceColumn: Data do pedido
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column id_produto
+		dataType: int64
+		formatString: 0
+		lineageTag: f60cea13-73a8-4852-8a3a-ddb921a49cbb
+		summarizeBy: none
+		sourceColumn: id_produto
+
+		annotation SummarizationSetBy = Automatic
+
+	column quantidade
+		dataType: int64
+		formatString: 0
+		lineageTag: 12f25562-22b5-4193-86eb-14ab27f063c6
+		summarizeBy: sum
+		sourceColumn: quantidade
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'desconto (%)'
+		dataType: int64
+		formatString: 0
+		lineageTag: d5e8590f-3d89-4927-aa48-0fe471dfbfa1
+		summarizeBy: sum
+		sourceColumn: desconto (%)
+
+		annotation SummarizationSetBy = Automatic
+
+	column Estado
+		dataType: string
+		lineageTag: 4ef4fb33-2878-4eef-b1ed-76005ee17c5f
+		summarizeBy: none
+		sourceColumn: Estado
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cidade
+		dataType: string
+		lineageTag: fd90d331-de80-4324-94c1-4bc0ddcabb82
+		dataCategory: City
+		summarizeBy: none
+		sourceColumn: Cidade
+
+		annotation SummarizationSetBy = Automatic
+
+	column Latitude
+		dataType: int64
+		formatString: 0
+		lineageTag: a8249d2b-e5b8-4762-a3b4-a37328a9d42f
+		summarizeBy: sum
+		sourceColumn: Latitude
+
+		annotation SummarizationSetBy = Automatic
+
+	column Longitude
+		dataType: int64
+		formatString: 0
+		lineageTag: 538f3712-2743-4ccf-a07c-3fbb583e76e1
+		summarizeBy: sum
+		sourceColumn: Longitude
+
+		annotation SummarizationSetBy = Automatic
+
+	column ship_to_door
+		dataType: int64
+		formatString: 0
+		lineageTag: 6dc5021d-e4db-4ad9-9770-dcaaf9bc5ed0
+		summarizeBy: sum
+		sourceColumn: ship_to_door
+
+		annotation SummarizationSetBy = Automatic
+
+	column Column16
+		dataType: string
+		lineageTag: aef91bf0-5c47-4a0e-914c-d786e2112633
+		summarizeBy: none
+		sourceColumn: Column16
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Column17
+		dataType: string
+		lineageTag: 67cad413-7974-4af2-8b3a-36b684292e29
+		summarizeBy: none
+		sourceColumn: Column17
+
+		annotation SummarizationSetBy = Automatic
+
+	column Column18
+		dataType: string
+		lineageTag: a9f84fbc-d191-4f46-8ff1-baa1aa446965
+		summarizeBy: none
+		sourceColumn: Column18
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fPedidos = m
+		mode: import
+		source =
+				let
+				    Fonte = Excel.Workbook(File.Contents("C:\Users\Ana\Documents\Documents\Alura\Cursos\PBI-visualizando e analisando\Base_de_dados-Opuline.xlsx"), null, true),
+				    #"pedidos (2)_Sheet" = Fonte{[Item="pedidos (2)",Kind="Sheet"]}[Data],
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(#"pedidos (2)_Sheet", [PromoteAllScalars=true]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"Código do pedido", Int64.Type}, {"Código do cliente", Int64.Type}, {"Data do pedido", type date}, {"id_produto", Int64.Type}, {"quantidade", Int64.Type}, {"desconto (%)", Int64.Type}, {"Estado", type text}, {"Cidade", type text}, {"Latitude", Int64.Type}, {"Longitude", Int64.Type}, {"ship_to_door", Int64.Type}, {"Valor_compra", Int64.Type}, {"Categoria", type text}, {"Column14", Int64.Type}, {"Column15", Int64.Type}}),
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Tipo Alterado",{"Valor_compra", "Categoria", "Column14", "Column15"})
+				in
+				    #"Colunas Removidas"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "e3ecd49adce738811eed",
+  "position": {
+    "x": 0,
+    "y": 0,
+    "z": 0,
+    "height": 240.00000000000003,
+    "width": 320,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "ImageGrid_FC5183B9_926C_45E0_B5F7_0CE9EAF1DA9B",
+    "query": {
+      "queryState": {
+        "ImageURL": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dProdutosFinais"
+                    }
+                  },
+                  "Property": "imagem"
+                }
+              },
+              "queryRef": "dProdutosFinais.imagem",
+              "nativeQueryRef": "imagem"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

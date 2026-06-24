@@ -1,0 +1,100 @@
+table dProdutosFinais
+	lineageTag: c84d250c-3e25-4e42-9941-9a5ecdc31d24
+
+	column codigo
+		dataType: int64
+		formatString: 0
+		lineageTag: e218ab89-f2c9-4c9f-9306-c7161cf63390
+		summarizeBy: none
+		sourceColumn: codigo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Título
+		dataType: string
+		lineageTag: 9d12ada9-8f90-4183-bcf3-27f7b44ed986
+		summarizeBy: none
+		sourceColumn: Título
+
+		annotation SummarizationSetBy = Automatic
+
+	column Marca
+		dataType: string
+		lineageTag: efd740ef-efd4-4b38-b8d9-4934a53fff1c
+		summarizeBy: none
+		sourceColumn: Marca
+
+		annotation SummarizationSetBy = Automatic
+
+	column Preço
+		dataType: decimal
+		formatString: 0
+		lineageTag: 37ea5a11-6026-45cc-93ab-726877864d45
+		summarizeBy: sum
+		sourceColumn: Preço
+
+		annotation SummarizationSetBy = Automatic
+
+	column imagem
+		dataType: string
+		lineageTag: f6a09998-0a33-46b2-8729-94c10604f132
+		summarizeBy: none
+		sourceColumn: imagem
+
+		annotation SummarizationSetBy = Automatic
+
+	column tamanho
+		dataType: string
+		lineageTag: 143bd857-2ef8-40ee-b178-e936c6c9943a
+		summarizeBy: none
+		sourceColumn: tamanho
+
+		annotation SummarizationSetBy = Automatic
+
+	column Categoria
+		dataType: string
+		lineageTag: bcf5608b-15bf-42cf-9be8-72158426bf05
+		summarizeBy: none
+		sourceColumn: Categoria
+
+		annotation SummarizationSetBy = Automatic
+
+	column Subcategoria
+		dataType: string
+		lineageTag: f636a619-2093-43b1-968c-6897a9b3fee4
+		summarizeBy: none
+		sourceColumn: Subcategoria
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cod_marca
+		dataType: string
+		lineageTag: 0ef9653f-411e-4ae3-85d3-49743cb860c6
+		summarizeBy: none
+		sourceColumn: Cod_marca
+
+		annotation SummarizationSetBy = Automatic
+
+	column Column10
+		dataType: string
+		lineageTag: 773a9480-ff7d-4a45-9255-216cd1ca4081
+		summarizeBy: none
+		sourceColumn: Column10
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dProdutosFinais = m
+		mode: import
+		source =
+				let
+				    Fonte = Excel.Workbook(File.Contents("C:\Users\Ana\Documents\Documents\Alura\Cursos\PBI-visualizando e analisando\Base_de_dados-Opuline.xlsx"), null, true),
+				    ProdutosFinais_Sheet = Fonte{[Item="ProdutosFinais",Kind="Sheet"]}[Data],
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(ProdutosFinais_Sheet, [PromoteAllScalars=true]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"codigo", Int64.Type}, {"Título", type text}, {"Marca", type text}, {"Preço", Currency.Type}, {"imagem", type text}, {"tamanho", type text}, {"Categoria", type text}, {"Subcategoria", type text}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegação
+

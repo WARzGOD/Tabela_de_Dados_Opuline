@@ -1,0 +1,25 @@
+relationship 9792a6cd-b934-4d20-bf5d-e2cc39ab989c
+	fromColumn: fPedidos.id_produto
+	toColumn: dProdutosFinais.codigo
+
+relationship AutoDetected_567bf429-9c44-4c50-a64e-6996fa311c46
+	fromColumn: dProdutosFinais.Subcategoria
+	toColumn: dCategoriasProdutos.Subcategoria
+
+relationship d7ca73db-9944-45e6-b69f-138da57215fa
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Calendario.Date
+	toColumn: LocalDateTable_77d250d5-8024-4a7d-93dd-e7b9c1652731.Date
+
+relationship 0960f07a-ddfa-4323-bca6-9aaa02228dc0
+	fromColumn: dMetaMensal.Data
+	toColumn: Calendario.Date
+
+relationship bacc8b94-7dce-4bfa-bf48-ae02ce92f608
+	fromColumn: fPedidos.'Data do pedido'
+	toColumn: Calendario.Date
+
+relationship AutoDetected_7e545155-4e57-4fac-bf49-8a220713dc56
+	fromColumn: dProdutosFinais.Marca
+	toColumn: dMarcas.Marca
+

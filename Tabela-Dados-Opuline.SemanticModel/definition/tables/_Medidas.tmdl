@@ -1,0 +1,58 @@
+table _Medidas
+	lineageTag: 9a685908-f46a-464d-b2bf-5b399488960f
+
+	measure Faturamento =
+			SUMX(
+			    fPedidos,
+			    fPedidos[quantidade]*RELATED(dProdutosFinais[Preço]))
+		formatString: "R$"\ #,0;-"R$"\ #,0;"R$"\ #,0
+		lineageTag: d348f32c-68fa-46fb-9d1f-edb9e5d3d93e
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure SomaMetas = AVERAGE(dMetaMensal[Meta])
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		lineageTag: 9ea67cbb-34cb-4837-9913-de8eba1a0a56
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure MetaS2Door = 8
+		formatString: 0
+		lineageTag: a2231ce9-f341-42ff-9bd5-f8a4deb7a37a
+
+	measure Quantidade = SUM(fPedidos[quantidade])
+		formatString: 0
+		lineageTag: 97b56bab-350a-4d4e-8207-6c28d0a38804
+
+	measure FaturamentoMédio =
+			AVERAGEX(
+			    fPedidos,
+			    fPedidos[quantidade]*RELATED(dProdutosFinais[Preço]))
+		formatString: "R$"\ #,0;-"R$"\ #,0;"R$"\ #,0
+		lineageTag: fc92ba15-719d-4a34-88ca-3d4e5bf4d53a
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure MetáMaxima = ```
+			
+			 IF([Faturamento]<[SomaMetas], [SomaMetas]*1.2, [Faturamento])
+			```
+		lineageTag: c31e43c8-2065-42c5-b188-958372ac724e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Column
+		formatString: 0
+		lineageTag: a63cceec-0d06-4748-85c3-d755747f2c63
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Column]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _Medidas = calculated
+		mode: import
+		source = Row("Column", BLANK())
+
+	annotation PBI_Id = 0703802b69574ba282aa166ed507dab9
+

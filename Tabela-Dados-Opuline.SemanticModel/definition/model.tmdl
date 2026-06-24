@@ -1,0 +1,28 @@
+model Model
+	culture: pt-BR
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: pt-BR
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["dProdutosFinais","fPedidos","dMetaMensal","dCategoriasProdutos","dMarcas"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table DateTableTemplate_c1901f16-83da-4f39-8702-db786c8a0a52
+ref table dProdutosFinais
+ref table fPedidos
+ref table _Medidas
+ref table Fatores
+ref table dMetaMensal
+ref table dCategoriasProdutos
+ref table Calendario
+ref table LocalDateTable_77d250d5-8024-4a7d-93dd-e7b9c1652731
+ref table dMarcas
+ref table 'Comparacao categoria'
+
+ref cultureInfo pt-BR
+

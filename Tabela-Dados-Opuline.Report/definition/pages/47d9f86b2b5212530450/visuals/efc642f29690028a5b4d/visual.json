@@ -1,0 +1,74 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "efc642f29690028a5b4d",
+  "position": {
+    "x": 0,
+    "y": 0,
+    "z": 0,
+    "height": 224.28571428571431,
+    "width": 504.28571428571433,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "barChart",
+    "query": {
+      "queryState": {
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fPedidos"
+                    }
+                  },
+                  "Property": "Cidade"
+                }
+              },
+              "queryRef": "fPedidos.Cidade",
+              "nativeQueryRef": "Cidade"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "FaturamentoMédio"
+                }
+              },
+              "queryRef": "_Medidas.FaturamentoMédio",
+              "nativeQueryRef": "FaturamentoMédio"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "_Medidas"
+                  }
+                },
+                "Property": "FaturamentoMédio"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

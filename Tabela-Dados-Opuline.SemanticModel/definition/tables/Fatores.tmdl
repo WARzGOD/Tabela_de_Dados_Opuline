@@ -1,0 +1,49 @@
+table Fatores
+	lineageTag: 3bd9afc2-7d41-42b9-9d84-93a7bdde37c5
+
+	column Fatores
+		lineageTag: d889e644-c0ea-4932-8c08-d9c485aff52b
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Fatores Pedido'
+
+		relatedColumnDetails
+			groupByColumn: 'Fatores Campos'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fatores Campos'
+		isHidden
+		lineageTag: 4b3e726e-2e3a-4e81-99df-7c125535c6a0
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Fatores Pedido'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fatores Pedido'
+		isHidden
+		formatString: 0
+		lineageTag: 4a16d7e4-b09c-4e2a-a24c-3c41423955f8
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fatores = calculated
+		mode: import
+		source =
+				{
+				    ("Categoria", NAMEOF('dCategoriasProdutos'[Categoria]), 0),
+				    ("Marca", NAMEOF('dProdutosFinais'[Marca]), 1),
+				    ("Tipo", NAMEOF(dMarcas[Origem]), 2)
+				}
+
+	annotation PBI_Id = fa42c7dfa60a409087a0d00fd970d3ea
+

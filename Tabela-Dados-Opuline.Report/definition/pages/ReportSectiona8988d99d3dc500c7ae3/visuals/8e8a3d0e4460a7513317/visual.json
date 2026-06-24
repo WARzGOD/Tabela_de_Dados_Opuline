@@ -1,0 +1,155 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "8e8a3d0e4460a7513317",
+  "position": {
+    "x": 0,
+    "y": 0,
+    "z": 0,
+    "height": 243.33333333333334,
+    "width": 285,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dCategoriasProdutos"
+                        }
+                      },
+                      "Hierarchy": "Categoria Hierarquia"
+                    }
+                  },
+                  "Level": "Categoria"
+                }
+              },
+              "queryRef": "dCategoriasProdutos.Categoria Hierarquia.Categoria",
+              "nativeQueryRef": "Categoria Hierarquia Categoria",
+              "active": true
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dCategoriasProdutos"
+                        }
+                      },
+                      "Hierarchy": "Categoria Hierarquia"
+                    }
+                  },
+                  "Level": "Subcategoria"
+                }
+              },
+              "queryRef": "dCategoriasProdutos.Categoria Hierarquia.Subcategoria",
+              "nativeQueryRef": "Categoria Hierarquia Subcategoria",
+              "active": false
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "Faturamento"
+                }
+              },
+              "queryRef": "_Medidas.Faturamento",
+              "nativeQueryRef": "Faturamento"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "HierarchyLevel": {
+                "Expression": {
+                  "Hierarchy": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "dCategoriasProdutos"
+                      }
+                    },
+                    "Hierarchy": "Categoria Hierarquia"
+                  }
+                },
+                "Level": "Categoria"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "expansionStates": [
+      {
+        "roles": [
+          "Rows"
+        ],
+        "levels": [
+          {
+            "queryRefs": [
+              "dCategoriasProdutos.Categoria Hierarquia.Categoria"
+            ],
+            "isCollapsed": true,
+            "identityKeys": [
+              {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dCategoriasProdutos"
+                    }
+                  },
+                  "Property": "Categoria"
+                }
+              }
+            ],
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "dCategoriasProdutos.Categoria Hierarquia.Subcategoria"
+            ],
+            "isCollapsed": true,
+            "isPinned": true
+          }
+        ],
+        "root": {}
+      }
+    ],
+    "objects": {
+      "values": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "20D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

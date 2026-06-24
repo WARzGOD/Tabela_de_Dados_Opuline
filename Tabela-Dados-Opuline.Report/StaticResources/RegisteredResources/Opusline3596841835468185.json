@@ -1,0 +1,26 @@
+{
+  "name": "Opusline",
+  "dataColors": [
+    "#BD6E6E",
+    "#663651",
+    "#46594D",
+    "#FF9595",
+    "#754D64",
+    "#5E7868",
+    "#FFBDBD",
+    "#B57D9D"
+  ],
+  "foreground": "#131312",
+  "background": "#FFFFFF",
+  "foregroundNeutralSecondary": "#6C6966",
+  "backgroundLight": "#E5E0DA",
+  "foregroundNeutralTertiary": "#ABA7A2",
+  "backgroundNeutral": "#C6C2BE",
+  "tableAccent": "#118DFF",
+  "maximum": "#4A2D75",
+  "center": "#1AAB40",
+  "minimum": "#E645AB",
+  "bad": "#FF0000",
+  "neutral": "#D1E400",
+  "good": "#00D02A"
+}

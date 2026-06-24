@@ -1,0 +1,49 @@
+table 'Comparacao categoria'
+	lineageTag: 3102552e-4be5-4e73-af09-fca531c63b68
+
+	column 'Comparacao categoria'
+		lineageTag: 47f8bd93-a4a0-4dba-9f7f-90ef85a7ac7c
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Comparacao categoria Pedido'
+
+		relatedColumnDetails
+			groupByColumn: 'Comparacao categoria Campos'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Comparacao categoria Campos'
+		isHidden
+		lineageTag: c442fa5c-e811-42d4-b12e-ec866c1d253a
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Comparacao categoria Pedido'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Comparacao categoria Pedido'
+		isHidden
+		formatString: 0
+		lineageTag: 7a727f1a-c49e-40ad-aa38-7d647938b9a5
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Comparacao categoria' = calculated
+		mode: import
+		source =
+				{
+				    ("Origem", NAMEOF('dMarcas'[Origem]), 0),
+				    ("Marca", NAMEOF('dMarcas'[Marca]), 1),
+				    ("Categoria", NAMEOF('dProdutosFinais'[Categoria]), 2)
+				}
+
+	annotation PBI_Id = d4e8617beeb84af8b2915d250d8c496f
+

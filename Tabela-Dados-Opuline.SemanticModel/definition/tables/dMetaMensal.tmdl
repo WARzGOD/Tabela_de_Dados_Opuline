@@ -1,0 +1,66 @@
+table dMetaMensal
+	lineageTag: aedaaba8-02a7-4eb9-ad8b-1caccd2b5cfa
+
+	column Categoria
+		dataType: string
+		lineageTag: 9ffbd22d-fa92-4932-9e26-5d0c8ebc74e2
+		summarizeBy: none
+		sourceColumn: Categoria
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ano
+		dataType: int64
+		formatString: 0
+		lineageTag: 6ea0e324-a664-40d3-b64e-0d70fc4241ed
+		summarizeBy: sum
+		sourceColumn: Ano
+
+		annotation SummarizationSetBy = Automatic
+
+	column Meses
+		dataType: string
+		lineageTag: f79342e9-735f-46db-b3f3-1f2f57d5f97c
+		summarizeBy: none
+		sourceColumn: Meses
+
+		annotation SummarizationSetBy = Automatic
+
+	column Data
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 217450bc-a661-4ab1-a18c-040fc6cf657e
+		summarizeBy: none
+		sourceColumn: Data
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Meta
+		dataType: double
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		lineageTag: 4a642529-b356-4c34-a261-4d9649386f40
+		summarizeBy: sum
+		sourceColumn: Meta
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	partition dMetaMensal = m
+		mode: import
+		source =
+				let
+				    Fonte = Excel.Workbook(File.Contents("C:\Users\Ana\Documents\Documents\Alura\Cursos\PBI-visualizando e analisando\Base_de_dados-Opuline.xlsx"), null, true),
+				    MetaMensal_Sheet = Fonte{[Item="MetaMensal",Kind="Sheet"]}[Data],
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(MetaMensal_Sheet, [PromoteAllScalars=true]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"Categoria", type text}, {"Ano", Int64.Type}, {"Meses", type text}, {"Data", type date}, {"Meta", type number}, {"Column6", type any}, {"Column7", type any}}),
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Tipo Alterado",{"Column6", "Column7"})
+				in
+				    #"Colunas Removidas"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

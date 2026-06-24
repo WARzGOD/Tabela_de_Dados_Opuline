@@ -1,0 +1,47 @@
+table dCategoriasProdutos
+	lineageTag: 307e8d49-28cf-4751-b6fd-5f4711bcc209
+
+	column Categoria
+		dataType: string
+		lineageTag: bb78a3fd-a8d6-41dd-b180-1716d855bfc3
+		summarizeBy: none
+		sourceColumn: Categoria
+
+		annotation SummarizationSetBy = Automatic
+
+	column Subcategoria
+		dataType: string
+		lineageTag: 5305a586-10f1-4fe4-b1c8-edaef3da029f
+		summarizeBy: none
+		sourceColumn: Subcategoria
+
+		annotation SummarizationSetBy = Automatic
+
+	hierarchy 'Categoria Hierarquia'
+		lineageTag: fead2fb2-4152-4d85-89e6-7aec09fce9e5
+
+		level Categoria
+			lineageTag: 6eb1c56f-9314-40e7-a673-9181b273a814
+			column: Categoria
+
+		level Subcategoria
+			lineageTag: 80dd1750-4be6-4254-b461-b74821d2bcbd
+			column: Subcategoria
+
+	partition dCategoriasProdutos = m
+		mode: import
+		source =
+				let
+				    Fonte = Excel.Workbook(File.Contents("C:\Users\Ana\Documents\Documents\Alura\Cursos\PBI-visualizando e analisando\Base_de_dados-Opuline.xlsx"), null, true),
+				    ProdutosFinais_Sheet = Fonte{[Item="ProdutosFinais",Kind="Sheet"]}[Data],
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(ProdutosFinais_Sheet, [PromoteAllScalars=true]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"codigo", Int64.Type}, {"Título", type text}, {"Marca", type text}, {"Preço", Currency.Type}, {"imagem", type text}, {"tamanho", type text}, {"Categoria", type text}, {"Subcategoria", type text}}),
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Tipo Alterado",{"codigo", "Título", "Marca", "Preço", "imagem", "tamanho", "Cod_marca", "Column10"}),
+				    #"Duplicatas Removidas" = Table.Distinct(#"Colunas Removidas")
+				in
+				    #"Duplicatas Removidas"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+
